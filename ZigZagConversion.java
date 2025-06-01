@@ -1,28 +1,27 @@
-package Leetcode;
-
-import java.util.Arrays;
-
 public class ZigZagConversion {
     public static void main(String[] args) {
-        System.out.println(convert("PAYPALISHIRING",4));
-//        convert("PAYPALISHIRING",4);
+        ZigZagConversion zc=new ZigZagConversion();
+        System.out.println(zc.convert("PAYPALISHIRING",3));
     }
-    public static String convert(String s, int numRows) {
+    public String convert(String s, int numRows) {
         String[] str=new String[numRows];
-        for (int i = 0; i < str.length; i++) {
+        for(int i=0;i<str.length;i++){
             str[i]="";
         }
         int i=0;
         while(i<s.length()){
-            for (int j = 0; j < numRows&&i<s.length(); j++) {
-                str[j]+=s.charAt(i++);
+            for(int j=0;j<numRows;j++){
+                str[j]+=s.charAt(i++)+"";
+                if(i>=s.length())break;
             }
-            for (int j =numRows-2; j >=1&&i<s.length() ; j--) {
-                str[j]+=s.charAt(i++);
+            if(i>=s.length())break;
+            for(int j=str.length-2;j>0;j--){
+                str[j]+=s.charAt(i++)+"";
+                if(i>=s.length())break;
             }
         }
         String ans="";
-        for (String word:str) {
+        for(String word:str){
             ans+=word;
         }
         return ans;
